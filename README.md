@@ -21,7 +21,3 @@ Ce repository contient le matériel pour un atelier de 45 minutes sur la maîtri
 - Connaissance de base en HTML, CSS et JavaScript
 - Un navigateur web moderne
 - Un éditeur de code
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction à ARIA - Exemples</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        .example { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Introduction à ARIA - Exemples</h1>
+
+    <div class="example">
+        <h2>1. Rôles ARIA</h2>
+        <div role="alert">Ceci est une alerte importante!</div>
+        <p>Le rôle "alert" indique que ce contenu doit être annoncé immédiatement par les technologies d'assistance.</p>
+    </div>
+
+    <div class="example">
+        <h2>2. États ARIA</h2>
+        <button aria-pressed="false" onclick="toggleButton(this)">Bouton toggle</button>
+        <p>L'attribut "aria-pressed" indique l'état actuel du bouton (pressé ou non).</p>
+    </div>
+
+    <div class="example">
+        <h2>3. Propriétés ARIA</h2>
+        <button aria-label="Fermer" onclick="alert('Fermé!')">X</button>
+        <p>L'attribut "aria-label" fournit un label lisible pour les technologies d'assistance quand le texte visuel n'est pas suffisant.</p>
+    </div>
+
+    <div class="example">
+        <h2>4. ARIA avec contenu dynamique</h2>
+        <div id="liveRegion" aria-live="polite"></div>
+        <button onclick="updateLiveRegion()">Mettre à jour la région live</button>
+        <p>L'attribut "aria-live" indique que les changements dans cette région doivent être annoncés par les technologies d'assistance.</p>
+    </div>
+
+    <script>
+        function toggleButton(btn) {
+            const pressed = btn.getAttribute('aria-pressed') === 'true';
+            btn.setAttribute('aria-pressed', String(!pressed));
+            btn.textContent = pressed ? 'Bouton toggle' : 'Bouton pressé';
+        }
+
+        function updateLiveRegion() {
+            const region = document.getElementById('liveRegion');
+            region.textContent = 'Contenu mis à jour à ' + new Date().toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>

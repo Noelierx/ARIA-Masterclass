@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple de refactorisation ARIA</title>
+    <style>
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-menu { display: none; position: absolute; background: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; }
+        .dropdown-menu.show { display: block; }
+        .dropdown-menu a { display: block; padding: 12px 16px; text-decoration: none; color: black; }
+        .dropdown-menu a:hover { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <h1>Exemple de refactorisation ARIA</h1>
+
+    <h2>Avant refactorisation</h2>
+    <div class="dropdown">
+        <div onclick="toggleMenu('beforeMenu')">Menu déroulant</div>
+        <div id="beforeMenu" class="dropdown-menu">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+        </div>
+    </div>
+
+    <h2>Après refactorisation</h2>
+    <div class="dropdown">
+        <button aria-haspopup="true" aria-expanded="false" onclick="toggleMenu('afterMenu', this)">
+            Menu déroulant
+        </button>
+        <ul id="afterMenu" class="dropdown-menu" role="menu">
+            <li><a href="#" role="menuitem">Option 1</a></li>
+            <li><a href="#" role="menuitem">Option 2</a></li>
+            <li><a href="#" role="menuitem">Option 3</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleMenu(menuId, button) {
+            const menu = document.getElementById(menuId);
+            const isExpanded = menu.classList.toggle('show');
+            
+            if (button) {
+                button.setAttribute('aria-expanded', isExpanded);
+            }
+        }
+    </script>
+
+    <h2>Explications des améliorations</h2>
+    <ul>
+        <li>Utilisation d'un élément <code>&lt;button&gt;</code> au lieu d'une <code>&lt;div&gt;</code> pour le déclencheur du menu.</li>
+        <li>Ajout des attributs <code>aria-haspopup</code> et <code>aria-expanded</code> pour indiquer la présence et l'état du menu déroulant.</li>
+        <li>Utilisation d'une liste <code>&lt;ul&gt;</code> pour le menu, ce qui est plus sémantique.</li>
+        <li>Ajout du rôle <code>menu</code> au conteneur du menu et <code>menuitem</code> aux éléments du menu.</li>
+        <li>Mise à jour dynamique de l'attribut <code>aria-expanded</code> lors de l'ouverture/fermeture du menu.</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordéon Accessible</title>
+    <style>
+        .accordion-header, summary { cursor: pointer; padding: 10px; background: #f0f0f0; }
+        .accordion-content, details > div { padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Accordéon Accessible</h1>
+
+    <h2>Version native</h2>
+    <details>
+        <summary>Section 1</summary>
+        <div>
+            <p>Contenu de la section 1 (native)...</p>
+        </div>
+    </details>
+    <details>
+        <summary>Section 2</summary>
+        <div>
+            <p>Contenu de la section 2 (native)...</p>
+        </div>
+    </details>
+
+    <h2>Version personnalisée</h2>
+    <div class="accordion">
+        <h3 class="accordion-header" aria-expanded="false" aria-controls="section1">
+            Section 1
+        </h3>
+        <div id="section1" class="accordion-content" hidden>
+            <p>Contenu de la section 1 (personnalisée)...</p>
+        </div>
+
+        <h3 class="accordion-header" aria-expanded="false" aria-controls="section2">
+            Section 2
+        </h3>
+        <div id="section2" class="accordion-content" hidden>
+            <p>Contenu de la section 2 (personnalisée)...</p>
+        </div>
+    </div>
+
+    <script src="accordion.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onglets Accessibles</title>
+    <style>
+        [role="tablist"] { display: flex; }
+        [role="tab"], .native-tabs > a { padding: 10px; cursor: pointer; text-decoration: none; color: black; }
+        [role="tab"][aria-selected="true"], .native-tabs > a.active { background: #ddd; }
+        [role="tabpanel"], .native-tabs > div { padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Onglets Accessibles</h1>
+
+    <h2>Version native</h2>
+    <div class="native-tabs">
+        <a href="#nativePanel1" class="active">Onglet 1</a>
+        <a href="#nativePanel2">Onglet 2</a>
+        <a href="#nativePanel3">Onglet 3</a>
+
+        <div id="nativePanel1">
+            <p>Contenu du panel 1 (natif)</p>
+        </div>
+        <div id="nativePanel2" hidden>
+            <p>Contenu du panel 2 (natif)</p>
+        </div>
+        <div id="nativePanel3" hidden>
+            <p>Contenu du panel 3 (natif)</p>
+        </div>
+    </div>
+
+    <h2>Version personnalisée</h2>
+    <div class="custom-tabs">
+        <div role="tablist" aria-label="Sections de contenu">
+            <button role="tab" aria-selected="true" aria-controls="customPanel1" id="customTab1">
+                Onglet 1
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="customPanel2" id="customTab2" tabindex="-1">
+                Onglet 2
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="customPanel3" id="customTab3" tabindex="-1">
+                Onglet 3
+            </button>
+        </div>
+
+        <div id="customPanel1" role="tabpanel" aria-labelledby="customTab1">
+            <p>Contenu du panel 1 (personnalisé)</p>
+        </div>
+        <div id="customPanel2" role="tabpanel" aria-labelledby="customTab2" hidden>
+            <p>Contenu du panel 2 (personnalisé)</p>
+        </div>
+        <div id="customPanel3" role="tabpanel" aria-labelledby="customTab3" hidden>
+            <p>Contenu du panel 3 (personnalisé)</p>
+        </div>
+    </div>
+
+    <script src="tabs.js"></script>
+</body>
+</html>

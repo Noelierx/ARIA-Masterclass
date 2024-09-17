@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Accessible</title>
+    <style>
+        .modal, .modal-overlay { display: none; }
+        .modal.active, .modal-overlay.active { display: block; }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .modal, dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modal Accessible</h1>
+    
+    <h2>Version native</h2>
+    <button id="openNativeModalBtn" aria-haspopup="dialog">Ouvrir la modal native</button>
+    <dialog id="nativeModal">
+        <h2>Titre de la Modal Native</h2>
+        <p>Contenu de la modal native...</p>
+        <button id="closeNativeModalBtn">Fermer</button>
+    </dialog>
+
+    <h2>Version personnalisée</h2>
+    <button id="openCustomModalBtn" aria-haspopup="dialog" aria-expanded="false">Ouvrir la modal personnalisée</button>
+    <div id="modalOverlay" class="modal-overlay" tabindex="-1"></div>
+    <div id="customModal" class="modal" role="dialog" aria-labelledby="customModalTitle" aria-hidden="true">
+        <h2 id="customModalTitle">Titre de la Modal Personnalisée</h2>
+        <p>Contenu de la modal personnalisée...</p>
+        <button id="closeCustomModalBtn">Fermer</button>
+    </div>
+
+    <script src="modal.js"></script>
+</body>
+</html>

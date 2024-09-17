@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Déroulant Accessible</title>
+    <style>
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-menu { position: absolute; background: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; }
+        .dropdown-menu[hidden] { display: none; }
+        .dropdown-menu a, .dropdown-menu div { display: block; padding: 12px 16px; text-decoration: none; color: black; }
+        .dropdown-menu a:hover, .dropdown-menu div:hover { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <h1>Menu Déroulant Accessible</h1>
+
+    <h2>Version native</h2>
+    <div class="dropdown">
+        <button id="nativeDropdownButton">Menu Déroulant Natif</button>
+        <ul id="nativeDropdownMenu" hidden>
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+        </ul>
+    </div>
+
+    <h2>Version personnalisée</h2>
+    <div class="dropdown">
+        <button id="customDropdownButton" aria-haspopup="true" aria-expanded="false">
+            Menu Déroulant Personnalisé
+        </button>
+        <div id="customDropdownMenu" class="dropdown-menu" role="menu" hidden>
+            <div role="menuitem" tabindex="-1">Option 1</div>
+            <div role="menuitem" tabindex="-1">Option 2</div>
+            <div role="menuitem" tabindex="-1">Option 3</div>
+        </div>
+    </div>
+
+    <script src="dropdown-menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de recherche accessible</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        .search-form { margin-bottom: 20px; }
+        input, button { font-size: 16px; padding: 5px; }
+        button { cursor: pointer; }
+        button:disabled { cursor: not-allowed; opacity: 0.5; }
+        .visually-hidden { 
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulaire de recherche accessible</h1>
+
+    <h2>Version accessible</h2>
+    <form role="search" class="search-form" id="accessibleSearchForm">
+        <label for="accessibleSearchInput">Rechercher :</label>
+        <input type="search" id="accessibleSearchInput" name="q" required>
+        <button type="submit" id="accessibleSearchButton">Rechercher</button>
+    </form>
+
+    <h2>Version non accessible</h2>
+    <div class="search-form" id="inaccessibleSearchForm">
+        <input type="text" id="inaccessibleSearchInput" placeholder="Rechercher...">
+        <div id="inaccessibleSearchButton">Go</div>
+    </div>
+
+    <div id="searchResults" aria-live="polite"></div>
+
+    <script src="search-form.js"></script>
+</body>
+</html>
